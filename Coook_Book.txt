@@ -1,0 +1,12 @@
+Omelette
+3
+Eggs | 2 | pcs
+Milk | 100 | ml
+Tomato | 2 | piece
+
+Peking Duck
+4
+Duck | 1 | piece
+Water | 2 | l
+Honey | 3 | tbsp.l
+Soy sauce | 60 | ml
