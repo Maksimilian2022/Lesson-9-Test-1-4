@@ -1,26 +1,25 @@
-def cook_book_mader(file_name, second_file):
-    cook_book_dictionary = {}
-    name_of_dish = []
-    i = -1
-    ingredients = []
-    a = -1
-    for line in open(file_name):
-        if line.strip().replace(" ", "a").isalpha():
-            cook_book_dictionary[line.strip()] = []
-            name_of_dish.append(line.strip())
-            i += 1
-        elif "|" in line:
-            a += 1
-            dict_of_ingredient = {'ingredient_name': line.split('|')[0], 'quantity': line.split('|')[1], 'measure': line.split('|')[2]}
-            ingredients.append(dict_of_ingredient)
-            cook_book_dictionary[name_of_dish[i]].append(ingredients[a])
-    with open(second_file, 'w') as file:
-        file.write(str(cook_book_dictionary))
+def cook_book_mader(file_name):
+    with open(file_name) as cook_book_mader_file:
+        cook_book = {}
+        for line in cook_book_mader_file:
+            ingredients_for_book = []
+            name_dish = line.strip()
+            for ingredients in range(int(cook_book_mader_file.readline())):
+                ingredient = cook_book_mader_file.readline()
+                ingredients_for_book.append({'ingredient_name': ingredient.split('|')[0], 'quantity': ingredient.split('|')[1], 'measure': ingredient.split('|')[2].strip()})
+            cook_book[name_dish] = ingredients_for_book
+            cook_book_mader_file.readline()
+        print(cook_book)
+        with open('Cook_Book_dict.txt', 'w') as Cook_Book_dict:
+            cook_book_str = str(cook_book)
+            Cook_Book_dict.write(cook_book_str)
 
-    return cook_book_dictionary
+        return
 
-#cook_book_mader('Coook_Book.txt')
-cook_book_mader('Coook_Book.txt', 'Cook_book_dict.txt')
+
+
+
+cook_book_mader('Coook_Book.txt')
 
 
 
